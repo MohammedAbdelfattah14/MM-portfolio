@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Mostafa | Data Analyst & AI Engineer</title>
+  <meta name="description" content="Portfolio of Mohamed Mostafa, Data Analyst & AI Engineer">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --bg-dark: #0a0f1a;
+      --bg-darker: #06090f;
+      --neon-cyan: #00f3ff;
+      --neon-purple: #b026ff;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Typography & Utilities */
+    .text-muted {
+      color: #ffffff !important;
+    }
+
+    section:not(#home) h1,
+    section:not(#home) h2,
+    section:not(#home) h3,
+    section:not(#home) h4,
+    section:not(#home) h5,
+    section:not(#home) h6 {
+      text-align: center !important;
+      width: 100%;
+    }
+
+    .text-cyan {
+      color: var(--neon-cyan) !important;
+    }
+
+    .text-purple {
+      color: var(--neon-purple) !important;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      position: relative;
+      display: block;
+      width: fit-content;
+      margin: 0 auto 3rem auto;
+      text-align: center;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      bottom: -10px;
+      left: 25%;
+      background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    }
+
+    /* Glassmorphism Classes */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      height: 100%;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 243, 255, 0.1);
+      border-color: rgba(0, 243, 255, 0.3);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(10, 15, 26, 0.8) !important;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 1rem 0;
+    }
+
+    .navbar-brand {
+      color: var(--text-main) !important;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .navbar-brand span {
+      color: var(--neon-cyan);
+    }
+
+    .nav-link {
+      color: var(--text-muted) !important;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--neon-cyan) !important;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    }
+
+    .navbar-toggler {
+      border-color: var(--glass-border);
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
+    /* Hero Section */
+    #home {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      /* Offset for navbar */
+    }
+
+    #hero-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 0%, var(--neon-cyan) 50%, var(--neon-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bullets {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 2rem;
+    }
+
+    .hero-bullets li {
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-bullets li i {
+      color: var(--neon-cyan);
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* Buttons */
+    .btn-neon {
+      background: transparent;
+      color: var(--neon-cyan);
+      border: 2px solid var(--neon-cyan);
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    }
+
+    .btn-neon:hover {
+      background: var(--neon-cyan);
+      color: var(--bg-dark);
+      box-shadow: 0 0 25px var(--neon-cyan);
+    }
+
+    .btn-neon-purple {
+      color: var(--neon-purple);
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 10px rgba(176, 38, 255, 0.2);
+    }
+
+    .btn-neon-purple:hover {
+      background: var(--neon-purple);
+      color: #fff;
+      box-shadow: 0 0 25px var(--neon-purple);
+    }
+
+    /* Profile Image */
+    .profile-img-container {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+
+    .profile-img-container::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      bottom: -10px;
+      left: -10px;
+      background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+      border-radius: 50%;
+      z-index: -1;
+      filter: blur(20px);
+      opacity: 0.7;
+      animation: pulseGlow 3s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        opacity: 0.5;
+        filter: blur(15px);
+      }
+
+      100% {
+        opacity: 0.9;
+        filter: blur(25px);
+      }
+    }
+
+    .profile-img {
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Scroll Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Skills Badges */
+    .skill-badge {
+      background: rgba(0, 243, 255, 0.05);
+      border: 1px solid rgba(0, 243, 255, 0.3);
+      color: var(--neon-cyan);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      margin: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .skill-badge:hover {
+      background: rgba(0, 243, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+      transform: translateY(-5px) scale(1.05);
+      color: #fff;
+    }
+
+    /* Education Timeline Style */
+    .timeline-item {
+      position: relative;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+      display: none;
+    }
+
+    /* Cards */
+    .project-card .d-flex {
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .project-card .d-flex i {
+      margin-bottom: 1rem;
+    }
+
+    .project-card .card-title {
+      color: var(--text-main);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: var(--neon-purple);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 15px rgba(176, 38, 255, 0.5);
+    }
+
+    /* Footer & Contact */
+    #contact {
+      background: linear-gradient(to bottom, var(--bg-dark), var(--bg-darker));
+    }
+
+    footer {
+      background: var(--bg-darker);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .social-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      color: #fff;
+      border-color: var(--neon-cyan);
+      background: rgba(0, 243, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+      transform: translateY(-5px);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 991px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .profile-img-container {
+        margin-top: 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">MM<span>.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home">
+    <canvas id="hero-canvas"></canvas>
+    <div class="container hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-7 order-2 order-lg-1 mt-5 mt-lg-0 reveal">
+          <h1 class="hero-title">Hi, I'm Mohamed Mostafa</h1>
+          <h2 class="hero-subtitle">Data Analyst & AI Engineer</h2>
+          <ul class="hero-bullets">
+            <li><i class="fa-solid fa-chart-line"></i> From data to predictions—clear, accurate, and actionable.</li>
+            <li><i class="fa-solid fa-brain"></i> Building models that turn complex data into smart decisions.</li>
+            <li><i class="fa-solid fa-shield-halved"></i> Data analysis and prediction you can trust.</li>
+          </ul>
+          <div class="mt-4">
+            <a href="#projects" class="btn-neon">View My Work</a>
+            <a href="#contact" class="btn-neon btn-neon-purple">Contact Me</a>
+          </div>
+        </div>
+        <div class="col-lg-5 order-1 order-lg-2 text-center reveal" style="transition-delay: 0.2s;">
+          <div class="profile-img-container">
+            <img src="ghazaly.png" alt="Mohamed Mostafa" class="profile-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section id="about" class="py-5 my-5">
+    <div class="container">
+      <h2 class="section-title reveal text-center">About Me</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="glass-card reveal p-4 p-md-5">
+            <p class="fs-4 text-cyan fw-bold mb-4 text-center">
+              "Every dataset tells a story—you just need the right tools to hear it."
+            </p>
+
+            <div class="row text-center text-md-start align-items-center mb-4">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <p class="fs-6 text-muted lh-lg mb-0">
+                  I'm Mohamed, a <strong>Computer Science student</strong> with a passion for turning raw, scattered
+                  data into clear insights and smart predictions using Python, data analysis, and Machine learning
+                  models.
+                </p>
+              </div>
+              <div class="col-md-6 border-md-start border-secondary ps-md-4">
+                <p class="fs-6 text-muted lh-lg mb-0">
+                  Through the <strong>Digital Egypt Pioneers Initiative (DEPI)</strong>, I gained hands-on experience in
+                  cleaning messy datasets, uncovering hidden patterns, and building models that predict future trends.
+                </p>
+              </div>
+            </div>
+
+            <div class="text-center border-top border-secondary pt-4 mt-2">
+              <p class="fs-5 text-muted lh-lg mb-0">
+                <i class="fa-solid fa-bullseye text-purple me-2"></i>
+                <span class="text-white fw-semibold">My Focus:</span> Making results simple, clear, and
+                actionable—helping you move from confusion to clarity, and from guesswork to data-driven strategies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="py-5">
+    <div class="container">
+      <h2 class="section-title reveal">Education</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="glass-card reveal">
+            <div class="timeline-item">
+              <h4 class="text-cyan mb-1 fw-bold">Faculty of Computers and Information</h4>
+              <h6 class="text-white mb-2">Assiut University</h6>
+              <p class="text-muted mb-0"><i class="fa-regular fa-calendar me-2"></i>2023 - 2027</p>
+            </div>
+            <div class="timeline-item mb-0 border-0 pb-0">
+              <h4 class="text-cyan mb-1 fw-bold">Digital Egypt Pioneers Initiative (DEPI)</h4>
+              <h6 class="text-white mb-2">AI & Data Science Track (Machine Learning)</h6>
+              <p class="text-muted mb-0"><i class="fa-regular fa-calendar me-2"></i>2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-5 my-5">
+    <div class="container text-center">
+      <h2 class="section-title reveal">Skills</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 reveal">
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <span class="skill-badge"><i class="fa-solid fa-puzzle-piece me-2"></i> Problem Solving</span>
+            <span class="skill-badge"><i class="fa-brands fa-python me-2"></i> Python, C++, Java</span>
+            <span class="skill-badge"><i class="fa-solid fa-database me-2"></i> Database, SQL</span>
+            <span class="skill-badge"><i class="fa-solid fa-pen-nib me-2"></i> UI/UX</span>
+            <span class="skill-badge"><i class="fa-solid fa-chart-pie me-2"></i> Data Analysis (pandas, numpy)</span>
+            <span class="skill-badge"><i class="fa-solid fa-chart-column me-2"></i> Data Visualization (matplotlib,
+              seaborn)</span>
+            <span class="skill-badge"><i class="fa-solid fa-robot me-2"></i> Machine Learning</span>
+            <span class="skill-badge"><i class="fa-solid fa-network-wired me-2"></i> Deep Learning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-5">
+    <div class="container">
+      <h2 class="section-title reveal">Projects</h2>
+      <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-md-6 reveal">
+          <div class="glass-card project-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="card-title text-cyan">Drug Classification</h4>
+              <i class="fa-solid fa-pills fs-3 text-muted"></i>
+            </div>
+            <p class="text-muted mb-0">Performed exploratory data analysis on patient data and applied advanced
+              visualizations and preprocessing techniques. Built and compared multiple machine learning models to
+              classify prescribed drugs, achieving high accuracy with advanced classifiers.</p>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="col-md-6 reveal" style="transition-delay: 0.1s;">
+          <div class="glass-card project-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="card-title text-cyan">California Housing Price Prediction</h4>
+              <i class="fa-solid fa-house-chimney-window fs-3 text-muted"></i>
+            </div>
+            <p class="text-muted mb-0">Explored the California housing dataset through data Analysis, cleaning, and
+              visualization. Applied machine learning regression models to predict house prices based on multiple
+              features.</p>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="col-md-6 reveal" style="transition-delay: 0.2s;">
+          <div class="glass-card project-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="card-title text-cyan">Detect Counterfeit Products</h4>
+              <i class="fa-solid fa-magnifying-glass-chart fs-3 text-muted"></i>
+            </div>
+            <p class="text-muted mb-0">Developed a machine learning model to classify genuine vs. counterfeit products
+              using the E-commerce Counterfeit Products Dataset. The project includes data preprocessing, model
+              training, and evaluation to support safer e-commerce.</p>
+          </div>
+        </div>
+        <!-- Project 4 -->
+        <div class="col-md-6 reveal" style="transition-delay: 0.3s;">
+          <div class="glass-card project-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="card-title text-cyan">Analyse Employees Data</h4>
+              <i class="fa-solid fa-users-viewfinder fs-3 text-muted"></i>
+            </div>
+            <p class="text-muted mb-0">Performed exploratory data analysis (EDA) on employee data to uncover insights
+              such as performance trends, salary distribution, tenure, and hiring patterns. Covered tasks like data
+              cleaning, visualization, and statistical summaries.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-5 my-5">
+    <div class="container">
+      <h2 class="section-title reveal">Services</h2>
+      <div class="row g-4 justify-content-center">
+        <!-- Service 1 -->
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="glass-card text-center">
+            <i class="fa-solid fa-chart-simple service-icon"></i>
+            <h4 class="text-white mb-3">Data Analysis & Visualization</h4>
+            <p class="text-muted mb-0">Analyzing, and visualizing datasets to extract actionable insights using Python
+              (Pandas, NumPy, Matplotlib, Seaborn).</p>
+          </div>
+        </div>
+        <!-- Service 2 -->
+        <div class="col-lg-4 col-md-6 reveal" style="transition-delay: 0.1s;">
+          <div class="glass-card text-center">
+            <i class="fa-solid fa-broom service-icon"></i>
+            <h4 class="text-white mb-3">Data Cleaning & Preprocessing</h4>
+            <p class="text-muted mb-0">Handling missing values, outliers, and formatting issues to prepare raw data for
+              accurate analysis and modeling.</p>
+          </div>
+        </div>
+        <!-- Service 3 -->
+        <div class="col-lg-4 col-md-6 reveal" style="transition-delay: 0.2s;">
+          <div class="glass-card text-center">
+            <i class="fa-solid fa-microchip service-icon"></i>
+            <h4 class="text-white mb-3">Machine Learning Models</h4>
+            <p class="text-muted mb-0">Building and evaluating ML models for prediction, classification, and clustering
+              tasks with Scikit-learn and TensorFlow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section & Footer -->
+  <section id="contact" class="pt-5 pb-0 mt-5">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-8 reveal">
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="fs-5 text-muted mb-5">
+            Let's turn your data into meaningful insights! Whether you need clean datasets, clear reports, or powerful
+            machine learning solutions, I'm here to help you achieve results that matter.
+          </p>
+          <div class="mb-5">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mohamedghazaly397@gmail.com&su=Portfolio%20Inquiry"
+              target="_blank" rel="noopener noreferrer" class="btn-neon"><i class="fa-solid fa-envelope me-2"></i> Send
+              Message</a>
+          </div>
+
+          <div class="social-links mb-5">
+            <a href="https://www.linkedin.com/in/mohammed-in/" class="social-btn" aria-label="LinkedIn"><i
+                class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/Mo7amd-hub" class="social-btn" aria-label="GitHub"><i
+                class="fa-brands fa-github"></i></a>
+            <a href="https://www.kaggle.com/mo7amed05" class="social-btn" aria-label="Kaggle"><i
+                class="fa-brands fa-kaggle"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="py-4 text-center">
+      <div class="container">
+        <p class="text-muted mb-0">© 2026 Mohamed Mostafa. All rights reserved.</p>
+      </div>
+    </footer>
+  </section>
+
+  <!-- Bootstrap 5 JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    // --- Canvas Particle Animation Background ---
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+
+    function setCanvasSize() {
+      canvas.width = window.innerWidth;
+      canvas.height = document.getElementById('home').offsetHeight;
+    }
+    setCanvasSize();
+
+    // Mouse interaction
+    let mouse = {
+      x: null,
+      y: null,
+      radius: 120
+    }
+
+    window.addEventListener('mousemove', function (event) {
+      mouse.x = event.x;
+      // Adjust mouse y to account for scrolling
+      mouse.y = event.y + window.scrollY;
+    });
+
+    // Reset mouse pos when leaving window
+    window.addEventListener('mouseout', function () {
+      mouse.x = undefined;
+      mouse.y = undefined;
+    });
+
+    class Particle {
+      constructor(x, y, directionX, directionY, size, color) {
+        this.x = x;
+        this.y = y;
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.size = size;
+        this.color = color;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        // Bounce off edges
+        if (this.x > canvas.width || this.x < 0) {
+          this.directionX = -this.directionX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.directionY = -this.directionY;
+        }
+
+        // Collision detection with mouse
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < mouse.radius + this.size) {
+          if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+            this.x += 2;
+          }
+          if (mouse.x > this.x && this.x > this.size * 10) {
+            this.x -= 2;
+          }
+          if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+            this.y += 2;
+          }
+          if (mouse.y > this.y && this.y > this.size * 10) {
+            this.y -= 2;
+          }
+        }
+
+        // Move particle
+        this.x += this.directionX;
+        this.y += this.directionY;
+
+        this.draw();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      let numberOfParticles = (canvas.height * canvas.width) / 12000;
+
+      for (let i = 0; i < numberOfParticles; i++) {
+        let size = (Math.random() * 2) + 1;
+        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+        let directionX = (Math.random() * 1) - 0.5;
+        let directionY = (Math.random() * 1) - 0.5;
+        let color = '#00f3ff';
+        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+      }
+    }
+
+    function connect() {
+      let opacityValue = 1;
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+          let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+            ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+
+          if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+            opacityValue = 1 - (distance / 15000);
+            ctx.strokeStyle = `rgba(0, 243, 255, ${opacityValue})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+      }
+      connect();
+    }
+
+    window.addEventListener('resize', function () {
+      setCanvasSize();
+      init();
+    });
+
+    init();
+    animate();
+
+    // --- Scroll Reveal Animation with Intersection Observer ---
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      });
+    }, revealOptions);
+
+    revealElements.forEach(el => revealOnScroll.observe(el));
+
+    // --- Smooth Scrolling for Navigation Links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Close mobile menu if open
+        const navbarCollapse = document.getElementById('navbarNav');
+        if (navbarCollapse.classList.contains('show')) {
+          let bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false
+          });
+          bsCollapse.hide();
+        }
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: offsetTop - 70, // Adjust for fixed navbar
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
